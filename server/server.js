@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 
 
 const app = express()
@@ -7,5 +8,10 @@ const app = express()
 app.use(express.json)
 app.use(cors())
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'))
+})
 
-app.listen(4000,( )=> console.log(`server runnint on 4000`))
+const port = process.env.PORT || 4000
+
+app.listen(port,( )=> console.log(`server running on 4000`))
